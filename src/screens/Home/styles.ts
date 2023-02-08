@@ -1,58 +1,53 @@
 import styled from 'styled-components/native'
 import { FlatList, FlatListProps } from 'react-native'
-import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { TaskTypes } from '../../components/Task'
 
 export const Container = styled.View`
   flex: 1;
-  align-items: center;
-  justify-content: center;
-
+  padding-bottom: 20px;
   font-family: ${({ theme }) => theme.FONTS.BOLD};
+  background: ${({ theme }) => theme.COLORS.BASE_600};
+  `
+
+export const Header = styled.View`
+  align-items: center;
   background: ${({ theme }) => theme.COLORS.BASE_700};
 `
 
-export const Header = styled.View`
-  flex: 1;
-  align-items: center;
-  justify-content: center;
-`
-
-export const TextTo = styled.Text`
-  font-size: 48px;
-  color: ${({ theme }) => theme.COLORS.PRIMARY};
-`
-
-export const TextDo = styled.Text`
-  font-size: 48px;
-  color: ${({ theme }) => theme.COLORS.PRIMARY};
-`
-
 export const Logo = styled.Image`
-  height: 48px;
-  width: 48px;
+  width: 50%;
+  margin: 72px 0;
 `
 
 export const ViewInput = styled.View`
   flex-direction: row;
-  align-items: center;
-  min-width: 90%;
-  justify-content: center;
+  width: 90%;
+  align-self: center;
+  margin-bottom: 24px;
 `
 
-export const TaskInput = styled.TextInput`
+export const TaskInput = styled.TextInput.attrs((props) => ({
+  placeholderTextColor: props.theme.COLORS.BASE_300,
+}))`
   color: ${({ theme }) => theme.COLORS.BASE_100};
+  background: ${({ theme }) => theme.COLORS.BASE_500};
   font-size: 16px;
+  align-self: stretch;
+  flex: 1;
   padding: 6px 12px;
-  border: 1px solid ${({ theme }) => theme.COLORS.BASE_300};
+  border: 1px solid ${({ theme }) => theme.COLORS.BASE_700};
   border-radius: 8px;
 `
 
-export const AddIcon = styled(FontAwesomeIcon)`
-  background: ${({ theme }) => theme.COLORS.SECONDARY};
-  color: ${({ theme }) => theme.COLORS.BASE_100};
-  padding: 20px;
-`
+// export const AddIcon = styled(FontAwesomeIcon)`
+//   color: ${({ theme }) => theme.COLORS.BASE_100};
+//   `
 
-export const TaskList = styled(FlatList as new (props: FlatListProps<TaskTypes>) => FlatList<TaskTypes>)`
-`
+export const AddButton = styled.TouchableOpacity`
+  background: ${({ theme }) => theme.COLORS.SECONDARY_DARK};
+  padding: 12px;
+  border-radius: 8px;
+  margin-left: 4px;
+  `
+
+export const TaskList = styled(FlatList as new (props: FlatListProps<TaskTypes>) => FlatList<TaskTypes>)``

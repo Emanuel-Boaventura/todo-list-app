@@ -1,56 +1,69 @@
-import { faPlusCircle } from "@fortawesome/pro-regular-svg-icons/faPlusCircle";
-import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome/";
-import { FlatList, TouchableOpacity } from "react-native";
+import { useState } from "react";
 import Task from "../../components/Task";
 import {
-  AddIcon,
+  AddButton,
   Container,
   Header,
   Logo,
   TaskInput,
   TaskList,
-  TextDo,
-  TextTo,
   ViewInput,
 } from "./styles";
 
+interface TaskListInterface {
+  id: string;
+  finished: boolean;
+  title: string;
+}
+
 export default function Home() {
-  const taskList = [
-    {
-      id: "1",
-      finished: true,
-      title: "dar git add .",
-    },
-    {
-      id: "2",
-      finished: false,
-      title: 'dar git commit "titulo"',
-    },
-    {
-      id: "3",
-      finished: false,
-      title: "dar git push",
-    },
-  ];
+  const [taskList, setTaskList] = useState<TaskListInterface[]>([]);
+  const [newTask, setNewTask] = useState<string>("");
+
+  function handleAddTask() {
+    setTaskList((prevState) => [
+      ...prevState,
+      {
+        id: new Date().getUTCMilliseconds().toString(),
+        finished: false,
+        title: newTask,
+      },
+    ]);
+    setNewTask("");
+  }
+
+  function handleDeleteTask(id: string) {
+    setTaskList((prevState) => prevState.filter((taskId) => taskId.id !== id));
+  }
 
   return (
     <Container>
       <Header>
-        <Logo source={{ uri: "../../../assets/rocket.png" }} />
-        <TextTo>
-          to<TextDo>do</TextDo>
-        </TextTo>
+        <Logo
+          source={require("../../../assets/logo.png")}
+          style={{ resizeMode: "contain" }}
+        />
       </Header>
-      <ViewInput>
-        <TaskInput />
-        <TouchableOpacity>
-          <AddIcon icon={faPlusCircle} />
-        </TouchableOpacity>
+      <ViewInput
+        style={{
+          transform: [{ translateY: -22 }],
+        }}
+      >
+        <TaskInput
+          placeholder="Adicione uma nova tarefa"
+          onChangeText={setNewTask}
+          value={newTask}
+        />
+        <AddButton onPress={handleAddTask}>
+          {/* <AddIcon icon={faPlusMinus} /> */}
+        </AddButton>
       </ViewInput>
       <TaskList
         data={taskList}
         keyExtractor={(item) => item.id}
-        renderItem={({ item }) => <Task {...item} />}
+        renderItem={({ item }) => (
+          <Task data={item} handleDeleteTask={handleDeleteTask} />
+        )}
       />
     </Container>
   );

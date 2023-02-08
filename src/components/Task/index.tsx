@@ -1,7 +1,11 @@
-import { faTrashAlt } from "@fortawesome/pro-regular-svg-icons/faTrashAlt";
-import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { TouchableOpacity } from "react-native";
-import { TaskContainer, TaskTitle, TrashIcon } from "./styles";
+import { TaskContainer, TaskTitle } from "./styles";
+
+type TaskCardType = {
+  data: TaskTypes;
+  handleDeleteTask: (id: string) => void;
+  handleFinished?: () => void;
+};
 
 export type TaskTypes = {
   id: string;
@@ -9,12 +13,16 @@ export type TaskTypes = {
   title: string;
 };
 
-export default function Task(data: TaskTypes) {
+export default function Task({
+  data,
+  handleDeleteTask,
+  handleFinished,
+}: TaskCardType) {
   return (
     <TaskContainer>
       <TaskTitle>{data.title}</TaskTitle>
-      <TouchableOpacity>
-        <TrashIcon icon={faTrashAlt} />
+      <TouchableOpacity onPress={() => handleDeleteTask(data.id)}>
+        {/* <TrashIcon icon={faTrashAlt} /> */}
       </TouchableOpacity>
     </TaskContainer>
   );
