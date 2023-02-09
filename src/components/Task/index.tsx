@@ -1,5 +1,6 @@
 import { TouchableOpacity } from "react-native";
-import { TaskContainer, TaskTitle } from "./styles";
+import { Ionicons } from "@expo/vector-icons";
+import { TaskContainer, TaskTitle, TrashIcon } from "./styles";
 
 type TaskCardType = {
   data: TaskTypes;
@@ -22,7 +23,7 @@ export default function Task({
     <TaskContainer>
       <TaskTitle>{data.title}</TaskTitle>
       <TouchableOpacity onPress={() => handleDeleteTask(data.id)}>
-        {/* <TrashIcon icon={faTrashAlt} /> */}
+        <TrashIcon name="md-trash-sharp" size={24} />
       </TouchableOpacity>
     </TaskContainer>
   );

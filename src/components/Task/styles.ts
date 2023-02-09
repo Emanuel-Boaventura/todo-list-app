@@ -1,4 +1,5 @@
 import styled from "styled-components/native";
+import { Ionicons } from "@expo/vector-icons";
 
 export const TaskContainer = styled.View`
   padding: 12px;
@@ -15,6 +16,7 @@ export const TaskTitle = styled.Text`
   font-size: 16px;
 `
 
-// export const TrashIcon = styled(FontAwesomeIcon)`
-//   color: ${({ theme }) => theme.COLORS.DANGER};
-// `
+export const TrashIcon = styled(Ionicons)`
+  color: ${({ theme }) => theme.COLORS.DANGER};
+  width: 24px;
+`

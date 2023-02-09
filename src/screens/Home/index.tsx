@@ -2,6 +2,7 @@ import { useState } from "react";
 import Task from "../../components/Task";
 import {
   AddButton,
+  AddIcon,
   Container,
   Header,
   Logo,
@@ -55,7 +56,7 @@ export default function Home() {
           value={newTask}
         />
         <AddButton onPress={handleAddTask}>
-          {/* <AddIcon icon={faPlusMinus} /> */}
+          <AddIcon name="pluscircleo" />
         </AddButton>
       </ViewInput>
       <TaskList

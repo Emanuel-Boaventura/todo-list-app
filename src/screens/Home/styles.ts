@@ -1,6 +1,7 @@
 import styled from 'styled-components/native'
 import { FlatList, FlatListProps } from 'react-native'
 import { TaskTypes } from '../../components/Task'
+import { AntDesign } from '@expo/vector-icons';
 
 export const Container = styled.View`
   flex: 1;
@@ -39,9 +40,11 @@ export const TaskInput = styled.TextInput.attrs((props) => ({
   border-radius: 8px;
 `
 
-// export const AddIcon = styled(FontAwesomeIcon)`
-//   color: ${({ theme }) => theme.COLORS.BASE_100};
-//   `
+export const AddIcon = styled(AntDesign)`
+  color: ${({ theme }) => theme.COLORS.BASE_100};
+  width: 35px;
+  height: 35px;
+  `
 
 export const AddButton = styled.TouchableOpacity`
   background: ${({ theme }) => theme.COLORS.SECONDARY_DARK};
