@@ -42,8 +42,23 @@ export default function Home() {
     setNewTask("");
   }
 
+  const finishedTasksNumber = taskList.filter(
+    ({ finished }) => finished
+  ).length;
+
   function handleDeleteTask(id: string) {
-    setTaskList((prevState) => prevState.filter((taskId) => taskId.id !== id));
+    setTaskList((prevState) => prevState.filter((task) => task.id !== id));
+  }
+
+  function handleFinished(id: string) {
+    setTaskList((prevState) =>
+      prevState.map((task) => {
+        if (task.id === id) {
+          return { ...task, finished: !task.finished };
+        }
+        return task;
+      })
+    );
   }
 
   return (
@@ -75,7 +90,7 @@ export default function Home() {
         </ViewAllTasks>
         <ViewTasksFinisheds>
           <TasksFinisheds>Concluidas</TasksFinisheds>
-          <NumberCounter>{taskList.length}</NumberCounter>
+          <NumberCounter>{finishedTasksNumber}</NumberCounter>
         </ViewTasksFinisheds>
       </ViewCounters>
       {taskList.length !== 0 ? (
@@ -83,7 +98,11 @@ export default function Home() {
           data={taskList}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
-            <Task data={item} handleDeleteTask={handleDeleteTask} />
+            <Task
+              data={item}
+              handleDeleteTask={handleDeleteTask}
+              handleFinished={handleFinished}
+            />
           )}
         />
       ) : (

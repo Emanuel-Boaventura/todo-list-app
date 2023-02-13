@@ -1,11 +1,17 @@
-import { TouchableOpacity } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
-import { TaskContainer, TaskTitle, TrashIcon } from "./styles";
+import {
+  CheckIcon,
+  DeleteButton,
+  EmptyCircle,
+  FullCircle,
+  TaskContainer,
+  TaskTitle,
+  TrashIcon,
+} from "./styles";
 
 type TaskCardType = {
   data: TaskTypes;
   handleDeleteTask: (id: string) => void;
-  handleFinished?: () => void;
+  handleFinished: (id: string) => void;
 };
 
 export type TaskTypes = {
@@ -21,10 +27,17 @@ export default function Task({
 }: TaskCardType) {
   return (
     <TaskContainer>
+      {data.finished ? (
+        <FullCircle onPress={() => handleFinished(data.id)}>
+          <CheckIcon name="md-checkmark-sharp" />
+        </FullCircle>
+      ) : (
+        <EmptyCircle onPress={() => handleFinished(data.id)} />
+      )}
       <TaskTitle>{data.title}</TaskTitle>
-      <TouchableOpacity onPress={() => handleDeleteTask(data.id)}>
+      <DeleteButton onPress={() => handleDeleteTask(data.id)}>
         <TrashIcon name="md-trash-sharp" size={24} />
-      </TouchableOpacity>
+      </DeleteButton>
     </TaskContainer>
   );
 }

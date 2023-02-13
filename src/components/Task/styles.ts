@@ -7,16 +7,45 @@ export const TaskContainer = styled.View`
   align-items: center;
   width: 90%;
   align-self: center;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   background: ${({ theme }) => theme.COLORS.BASE_500};
   `
 
 export const TaskTitle = styled.Text`
   color: ${({ theme }) => theme.COLORS.BASE_100};
   font-size: 16px;
+  margin-left: 8px;
+`
+
+export const EmptyCircle = styled.TouchableOpacity`
+  border-color: ${({ theme }) => theme.COLORS.SECONDARY_DARK};
+  border-width: 2px;
+  border-radius: 99px;
+  height: 24px;
+  width: 24px;
+  `
+
+export const FullCircle = styled.TouchableOpacity`
+  border-color: ${({ theme }) => theme.COLORS.PRIMARY_DARK};
+  background-color: ${({ theme }) => theme.COLORS.PRIMARY};
+  border-width: 2px;
+  border-radius: 99px;
+  height: 24px;
+  width: 24px;
+`
+
+export const DeleteButton = styled.TouchableOpacity`
+  margin-left: auto;
 `
 
 export const TrashIcon = styled(Ionicons)`
   color: ${({ theme }) => theme.COLORS.DANGER};
   width: 24px;
+`
+
+export const CheckIcon = styled(Ionicons)`
+  color: ${({ theme }) => theme.COLORS.BASE_200};
+  font-size: 16px;
+  align-self: center;
+  margin: auto 0;
 `
