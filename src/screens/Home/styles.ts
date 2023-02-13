@@ -5,7 +5,7 @@ import { AntDesign } from '@expo/vector-icons';
 
 export const Container = styled.View`
   flex: 1;
-  padding-bottom: 20px;
+  padding-bottom:  10px;
   font-family: ${({ theme }) => theme.FONTS.BOLD};
   background: ${({ theme }) => theme.COLORS.BASE_600};
   `

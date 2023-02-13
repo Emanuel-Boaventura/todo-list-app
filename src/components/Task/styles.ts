@@ -7,8 +7,12 @@ export const TaskContainer = styled.View`
   align-items: center;
   width: 90%;
   align-self: center;
-  /* justify-content: space-between; */
+  border-radius: 12px;
+  margin-bottom: 8px;
+
   background: ${({ theme }) => theme.COLORS.BASE_500};
+  border-color: ${({ theme }) => theme.COLORS.BASE_400};
+  border-width: 1px;
   `
 
 export const TaskTitle = styled.Text`
