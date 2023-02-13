@@ -1,14 +1,21 @@
 import { useState } from "react";
+import NoTasks from "../../components/NoTasks";
 import Task from "../../components/Task";
 import {
   AddButton,
   AddIcon,
+  AllTasks,
   Container,
   Header,
   Logo,
+  NumberCounter,
   TaskInput,
   TaskList,
+  TasksFinisheds,
+  ViewAllTasks,
+  ViewCounters,
   ViewInput,
+  ViewTasksFinisheds,
 } from "./styles";
 
 interface TaskListInterface {
@@ -22,6 +29,8 @@ export default function Home() {
   const [newTask, setNewTask] = useState<string>("");
 
   function handleAddTask() {
+    if (!newTask) return;
+
     setTaskList((prevState) => [
       ...prevState,
       {
@@ -59,13 +68,27 @@ export default function Home() {
           <AddIcon name="pluscircleo" />
         </AddButton>
       </ViewInput>
-      <TaskList
-        data={taskList}
-        keyExtractor={(item) => item.id}
-        renderItem={({ item }) => (
-          <Task data={item} handleDeleteTask={handleDeleteTask} />
-        )}
-      />
+      <ViewCounters>
+        <ViewAllTasks>
+          <AllTasks>Criadas</AllTasks>
+          <NumberCounter>{taskList.length}</NumberCounter>
+        </ViewAllTasks>
+        <ViewTasksFinisheds>
+          <TasksFinisheds>Concluidas</TasksFinisheds>
+          <NumberCounter>{taskList.length}</NumberCounter>
+        </ViewTasksFinisheds>
+      </ViewCounters>
+      {taskList.length !== 0 ? (
+        <TaskList
+          data={taskList}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => (
+            <Task data={item} handleDeleteTask={handleDeleteTask} />
+          )}
+        />
+      ) : (
+        <NoTasks />
+      )}
     </Container>
   );
 }

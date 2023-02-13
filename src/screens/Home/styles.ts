@@ -27,6 +27,41 @@ export const ViewInput = styled.View`
   margin-bottom: 24px;
 `
 
+export const ViewCounters = styled.View`
+  flex-direction: row;
+  font-size: 14px;
+  width: 90%;
+  align-self: center;
+  justify-content: space-between;
+  padding-bottom: 24px;
+`
+
+export const ViewAllTasks = styled.View`
+  flex-direction: row;
+`
+
+export const ViewTasksFinisheds = styled.View`
+  flex-direction: row;
+`
+
+export const AllTasks = styled.Text`
+color: ${({ theme }) => theme.COLORS.SECONDARY};
+font-weight: 700;
+`
+
+export const TasksFinisheds = styled.Text`
+  color: ${({ theme }) => theme.COLORS.PRIMARY};
+  font-weight: 700;
+`
+
+export const NumberCounter = styled.Text`
+  color: ${({ theme }) => theme.COLORS.BASE_100};
+  padding: 0 8px;
+  background-color: ${({ theme }) => theme.COLORS.BASE_400};
+  border-radius: 99px;
+  margin-left: 8px;
+`
+
 export const TaskInput = styled.TextInput.attrs((props) => ({
   placeholderTextColor: props.theme.COLORS.BASE_300,
 }))`
@@ -42,15 +77,18 @@ export const TaskInput = styled.TextInput.attrs((props) => ({
 
 export const AddIcon = styled(AntDesign)`
   color: ${({ theme }) => theme.COLORS.BASE_100};
-  width: 35px;
-  height: 35px;
-  `
+  margin: auto 0;
+  font-size: 16px;
+  width: 17px;
+  line-height: 17px;
+`
 
 export const AddButton = styled.TouchableOpacity`
   background: ${({ theme }) => theme.COLORS.SECONDARY_DARK};
-  padding: 12px;
+  padding: 14px;
   border-radius: 8px;
   margin-left: 4px;
-  `
+`
 
 export const TaskList = styled(FlatList as new (props: FlatListProps<TaskTypes>) => FlatList<TaskTypes>)``
+
