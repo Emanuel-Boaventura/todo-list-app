@@ -19,6 +19,15 @@ export const TaskTitle = styled.Text`
   color: ${({ theme }) => theme.COLORS.BASE_100};
   font-size: 16px;
   margin-left: 8px;
+  width: 80%;
+`
+
+export const TaskTitleFinished = styled.Text`
+  color: ${({ theme }) => theme.COLORS.BASE_300};
+  font-size: 16px;
+  margin-left: 8px;
+  width: 80%;
+  text-decoration: line-through;
 `
 
 export const EmptyCircle = styled.TouchableOpacity`
@@ -30,9 +39,7 @@ export const EmptyCircle = styled.TouchableOpacity`
   `
 
 export const FullCircle = styled.TouchableOpacity`
-  border-color: ${({ theme }) => theme.COLORS.PRIMARY_DARK};
   background-color: ${({ theme }) => theme.COLORS.PRIMARY};
-  border-width: 2px;
   border-radius: 99px;
   height: 24px;
   width: 24px;

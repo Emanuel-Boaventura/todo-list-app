@@ -5,6 +5,7 @@ import {
   FullCircle,
   TaskContainer,
   TaskTitle,
+  TaskTitleFinished,
   TrashIcon,
 } from "./styles";
 
@@ -28,13 +29,18 @@ export default function Task({
   return (
     <TaskContainer>
       {data.finished ? (
-        <FullCircle onPress={() => handleFinished(data.id)}>
-          <CheckIcon name="md-checkmark-sharp" />
-        </FullCircle>
+        <>
+          <FullCircle onPress={() => handleFinished(data.id)}>
+            <CheckIcon name="md-checkmark-sharp" />
+          </FullCircle>
+          <TaskTitleFinished>{data.title}</TaskTitleFinished>
+        </>
       ) : (
-        <EmptyCircle onPress={() => handleFinished(data.id)} />
+        <>
+          <EmptyCircle onPress={() => handleFinished(data.id)} />
+          <TaskTitle>{data.title}</TaskTitle>
+        </>
       )}
-      <TaskTitle>{data.title}</TaskTitle>
       <DeleteButton onPress={() => handleDeleteTask(data.id)}>
         <TrashIcon name="md-trash-sharp" size={24} />
       </DeleteButton>

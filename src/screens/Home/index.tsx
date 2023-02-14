@@ -32,12 +32,12 @@ export default function Home() {
     if (!newTask) return;
 
     setTaskList((prevState) => [
-      ...prevState,
       {
         id: new Date().getUTCMilliseconds().toString(),
         finished: false,
         title: newTask,
       },
+      ...prevState,
     ]);
     setNewTask("");
   }
